@@ -1,2 +1,1 @@
-# Profile
-## This repository contains my portfolio
+# This repository contains my portfolio
