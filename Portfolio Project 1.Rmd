@@ -1,0 +1,64 @@
+---
+title: "Covid 19 Analysis"
+author: "Arun Solviya"
+date: "7/9/2021"
+output:
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+This is the analysis of the covid-19 public data set. This involves summarization of the covid cases and visualization of the current situation of the pandemic worldwide. This explains the number or infections, deaths and recoveries throughout the countries of the world.
+
+This data analysis plots the visualizations of the trends and patterns derived form the data set. This helps an individual understand the growth rate of the infeciton throughout the world. Thus, helping them to understand the global scenario as of today.
+
+
+
+## Install Library
+```{r}
+library(covid19.analytics)
+```
+
+## Access Data
+```{r}
+ag <- covid19.data(case = 'aggregated')
+tsc <- covid19.data(case = 'ts-confirmed')
+tsa <- covid19.data(case = 'ts-ALL')
+```
+
+
+#3 Summary with graphics
+```{r}
+report.summary(Nentries = 10,
+               graphical.output = T)
+```
+
+## Totals as per India
+```{r}
+tots.per.location(tsc, geo.loc = 'India')
+```
+
+## Growth rate in India
+```{r}
+growth.rate(tsc, geo.loc = 'India')
+```
+
+## Totals plot for India
+```{r}
+totals.plt(tsa, c('India'))
+```
+
+## Interactive world map with covid cases for each country. 
+```{r}
+live.map(tsc)
+```
+
+## SIR Model (Susceptible Infected Recovered Model) with respect to total population of India
+```{r}
+generate.SIR.model(tsc, 'India', tot.population = 1360000000)
+```
+
